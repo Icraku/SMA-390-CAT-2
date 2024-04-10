@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def radioactive_decay(initial_amount, decay_constant, time_values):
+
+    """
+    Simulating the decay of a radioactive substance.
+
+    Parameters: initial_amount (float) - The initial amount of the radioactive substance.
+                decay_constant (float) - The decay constant of the substance.
+                time_values (numpy.ndarray) - Array of time values at which to compute the amount of substance.
+
+    Returns: numpy.ndarray - Array containing the amount of substance at each time value
+    """
+
+    amount = initial_amount * np.exp(-decay_constant * time_values)
+    return amount
+
+# Example parameters for plotting
+initial_amount = 10000
+decay_constant = 0.02
+time_values = np.linspace(0, 1000, 10000)
+
+amount_values = radioactive_decay(initial_amount, decay_constant, time_values)
+
+# Plotting results
+plt.plot(time_values, amount_values)
+plt.xlabel('Time in se')
+plt.ylabel('Amount of Radioactive Substance')
+plt.title('Radioactive Decay Simulation')
+plt.grid(True)
+plt.show()
